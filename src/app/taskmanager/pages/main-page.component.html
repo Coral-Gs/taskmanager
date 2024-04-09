@@ -1,5 +1,6 @@
 <h1>Gestor de Tareas</h1>
-<div class="container-fluid">
+<div class="container">
+<hr>
   <div class="row">
     <div class="col">
       <app-list-tasks [tasksList]="getTasks" (deleteTask)="onDeleteTask($event)" (completeTask)="onCompleteTask($event)"></app-list-tasks>
