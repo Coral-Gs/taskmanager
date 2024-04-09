@@ -1,0 +1,11 @@
+<h4>List</h4>
+<ul class="list-group">
+    <li 
+    class="list-group-item d-flex justify-content-between align-items-center"
+    *ngFor="let task of tasksList"
+    [ngClass]="{'list-group-item-success': task.completado}">
+    <input type="checkbox" id="checkbox" (click)="onCompleteTask(task.id)" > 
+    <span>{{task.nombre}}</span>
+    <button class="btn btn-danger" (click)="onDeleteTask(task.id)">X</button>
+</li>
+</ul>

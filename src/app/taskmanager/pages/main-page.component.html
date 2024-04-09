@@ -1,0 +1,11 @@
+<h1>Welcome to Task Manager!</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <app-list-tasks [tasksList]="getTasks" (deleteTask)="onDeleteTask($event)" (completeTask)="onCompleteTask($event)"></app-list-tasks>
+    </div>
+    <div class="col">
+      <app-add-task (onNewTask)="onNewTask($event)"></app-add-task>
+    </div>
+  </div>
+</div>

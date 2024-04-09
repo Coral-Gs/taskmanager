@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-practica1',
   templateUrl: './practica1.component.html',
-  styleUrl: './practica1.component.css'
 })
 
 export class Practica1Component {
@@ -67,7 +66,7 @@ class TaskList {
     });
   }
 }
-
+/*
 //Crear instancia
 let myList = new TaskList();
 
@@ -88,3 +87,4 @@ myList.removeTask(2);
 //Imprimir lista actualizada
 myList.printTasks();
 
+*/

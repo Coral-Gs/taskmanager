@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Practica1Component } from './practica1/practica1.component';
+import { TaskmanagerModule } from './taskmanager/taskmanager.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { Practica1Component } from './practica1/practica1.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TaskmanagerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
