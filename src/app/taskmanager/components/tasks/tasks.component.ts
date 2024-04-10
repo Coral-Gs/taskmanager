@@ -4,35 +4,31 @@ import { Task } from '../../interfaces/tasks.interfaces';
 @Component({
   selector: 'app-list-tasks',
   templateUrl: './tasks.component.html',
-  styleUrl: 'tasks.component.css',
+  styleUrls: ['tasks.component.css'],
 })
 export class TasksComponent {
 
   //TODO: public checked: boolean = false; //Tick del checkbox
 
   @Input()
-  public tasksList: Task[] = [
-    {
-      id: '',
-      nombre: '',
-      completado: false,
-    },
-  ];
-
+  public tasksList!: Task[];
   @Output()
   public deleteTask: EventEmitter<string> = new EventEmitter();
+  @Output()
+  public completeTask: EventEmitter<string> = new EventEmitter();
 
+  
   //Emite ID de tarea a componente padre para borrar tarea
   onDeleteTask(id: string): void {
     this.deleteTask.emit(id);
     console.log(id);
   }
-  @Output()
-  public completeTask: EventEmitter<string> = new EventEmitter();
 
   //Emite ID de tarea a componente padre para completar tarea 
   onCompleteTask(id: string): void {
     this.completeTask.emit(id);
+  
+    console.log(this.tasksList)
     //TODO: this.checked = !this.checked; //Pone check a una tarea 
   }
 }
