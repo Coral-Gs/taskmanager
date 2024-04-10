@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../interfaces/interfaces';
+import { Task } from '../interfaces/tasks.interfaces';
 import { v4 as uuid } from 'uuid';
 
 @Injectable({ providedIn: 'root' })
@@ -46,6 +46,7 @@ export class TaskService {
         return { ...task, completado: true };
         
       } else if (task.id === id && task.completado){
+
          return { ...task, completado: false }
       }
 

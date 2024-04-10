@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../services/task-service';
-import { Task } from '../interfaces/interfaces';
+import { Task } from '../interfaces/tasks.interfaces';
 
 @Component({
   selector: 'tasksmanager-main-page',
