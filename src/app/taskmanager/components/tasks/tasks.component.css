@@ -1,4 +1,27 @@
-#checkbox[type="checkbox"] {
+#checkbox{
   width: 20px;;
   height: 20px;
 }
+
+#task-container {
+  background-color: #1F2937;
+  border-radius: 5px;
+}
+
+#task-content {
+  padding:15px;
+}
+
+#edit-button{
+  margin: auto;
+  padding: 10px 0;
+  
+}
+
+.no-tasks {
+  background-color: #4ec887;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 40px;
+}
+

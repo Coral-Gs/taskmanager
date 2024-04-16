@@ -37,7 +37,7 @@ export class TasksComponent {
     console.log(id);
   }
 
-  //Muestra diálogo de confirmación para eliminar tarea
+  //Muestra diálogo de confirmación para eliminar o no una tarea
   confirmDeletion(event: Event, id:string) {
 
     this.confirmationService.confirm({
@@ -50,7 +50,7 @@ export class TasksComponent {
         acceptIcon:"none",
         rejectIcon:"none",
         rejectButtonStyleClass:"p-button-text",
-
+      
         accept: () => {
             this.onDeleteTask(id); //Emito el id de la tarea a eliminar desde el servicio
             this.messageService.add({ severity: 'info', detail: 'Tarea eliminada', key:'dt' });

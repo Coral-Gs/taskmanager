@@ -1,40 +1,50 @@
 <h4>Lista de tareas</h4>
 
-<p-card
+<!--AVISOS-->
+<!--Mensaje de aviso si una tarea está completada y no se puede editar-->
+<p-toast position="top-center" key="tc"></p-toast>
+<!--Mensaje de aviso de tarea eliminada-->
+<p-toast key="dt"></p-toast>
+<!--Dialogo de confirmación para eliminar tarea-->
+<p-confirmDialog key="cd"></p-confirmDialog>
+
+<div *ngIf="tasksList.length===0; tasksList"
+class="no-tasks">
+No hay tareas pendientes
+</div>
+<!--Listado de tareas-->
+<div class="grid m-5 justify-content-center"
+  id="task-container"
   *ngFor="let task of tasksList"
   class="m-2"
+  [ngClass]="{ 'bg-green-700': task.completado }"
+  #tasksList
 >
-<div class="grid">
-  <!--Completar task-->
-  <input
-    [(ngModel)]="task.completado"
-    type="checkbox"
-    id="checkbox"
-    (click)="onCompleteTask(task.id)"
-    [ngClass]="{'green-400': task.completado}"
-    class="col"
-  />
-  <span class="col">{{ task.nombre }}</span>
-  <!--Botón borrar-->
-  <p-button
-    icon="pi pi-times"
-    [rounded]="true"
-    severity="danger"
-    (click)="confirmDeletion($event, task.id)"
-    class="col"
-  ></p-button>
-  <!--Mensaje de aviso de tarea eliminada-->
-  <p-toast key="dt"></p-toast>
-  <!--Dialogo de confirmación para eliminar tarea-->
-  <p-confirmDialog key="cd"></p-confirmDialog>
-  <!--Botón editar que lleva a la vista /editTask pasando el ID-->
-  <p-button
-    icon="pi pi-pencil"
-    (click)="redirectToEditTask(task)"
-    class="col"
-    ></p-button>
-    <!--Mensaje de aviso de que una tarea está completada y no se puede editar-->
-    <p-toast position="top-center" key="tc"></p-toast>
-</div>
-</p-card>
+  <div class="grid mt-5 flex align-items-baseline flex-wrap" id="task-content">
+    <!--Completar task-->
+    <input
+      [(ngModel)]="task.completado"
+      type="checkbox"
+      id="checkbox"
+      (click)="onCompleteTask(task.id)"
+      class="col-2 ml-4 mr-2 "
+    />
+    <span class="col text-lg">{{ task.nombre }}</span>
+    <!--Botón borrar-->
+    <button pButton
+      icon="pi pi-times"
+      [rounded]="true"
+      severity="danger"
+      (click)="confirmDeletion($event, task.id)"
+      class="p-button-sm"
+    ></button>
 
+    <!--Botón editar que lleva a la vista /editTask pasando el ID-->
+    <button pButton
+      class="p-button-sm m-2"
+      id="edit-button"
+      icon="pi pi-pencil"
+      (click)="redirectToEditTask(task)"
+    ></button>
+  </div>
+</div>

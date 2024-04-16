@@ -27,6 +27,7 @@ export class EditTaskComponent implements OnInit {
     private messageService: MessageService // Servicio par pop ups
   ) {}
 
+  //Función de ciclo de vida que se suscribe a parámetros de ruta
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.taskId = params['id']; // Obtengo el ID de la tarea desde la URL
@@ -46,9 +47,16 @@ export class EditTaskComponent implements OnInit {
       //Redirecciono a la vista de lista de tareas 3 segundos después
       setTimeout( () => {
       this.router.navigate(['/taskList']);
-      }, 2000) 
+      }, 1000) 
     }
   }
+
+  //Función para redireccionar al a taskList limpiando el formulario
+  redirectToTaskList():void {
+    this.validationService.resetForm();
+    this.router.navigate(['/taskList'])
+  }
+
  
 }
 

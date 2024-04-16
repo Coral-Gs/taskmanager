@@ -11,7 +11,10 @@
       
         <!--Botón de guardar edición-->
         <p-button type="submit" label="Guardar" class="m-2"></p-button>
-      
+
+        <!--Botón para volver atrás-->
+        <p-button (click)="redirectToTaskList()" label="Atrás"></p-button>
+
         <!--Mensaje de error de validación-->
         <div *ngIf="validationService.isValidField('nombre')" class="error-message">
           {{ validationService.getFieldError('nombre') }}
