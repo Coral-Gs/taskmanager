@@ -20,6 +20,7 @@ export class TaskService {
       ...task,
       id: uuid(),
     };
+    console.log(newTask.id)
     this.tasksList.push(newTask);
     this.saveLocalStorage();
   }
@@ -44,6 +45,21 @@ export class TaskService {
 
       return task;
     });
+    this.saveLocalStorage();
+  }
+
+  //Función para editar una tarea
+  editTask(id:string, editedTask: string){
+    
+    this.tasksList = this.tasksList.map((task) => {
+      if (task.id === id && !task.completado) {
+   
+        return { ...task, nombre: editedTask };
+        
+      } 
+      return task;
+    });
+
     this.saveLocalStorage();
   }
 

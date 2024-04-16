@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AddTaskComponent } from './components/add-task/add-task.component';
-import { TasksComponent } from './components/tasks/tasks.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { MainPageComponent } from './pages/main-page.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
-import { EditTaskComponent } from './components/edit-task/edit-task.component';
-
+import { TasksComponent } from './components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     CommonModule,
     FormsModule,
     PrimeNgModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
   ]
 })
 export class TaskmanagerModule { }

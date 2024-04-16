@@ -8,9 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastModule } from 'primeng/toast';
-
 
 @NgModule({
   exports: [

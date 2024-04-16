@@ -39,18 +39,7 @@ export class ValidationService {
       }
       return null;
     }
-    //Función que marca los campos como tocados una vez se envía el formulario por primera vez
-    /*onSave():void {
 
-        if (this.myForm.invalid) {
-          this.myForm.markAllAsTouched(); 
-          return;
-        }; // Si alguno de los campos del formulario no es válido no imprime nada
-        console.log(this.myForm.value)
-        this.myForm.reset({nombre: ''})
-    
-      }
-*/
       markAsTouched(): void {
         this.myForm.markAllAsTouched();
       }

@@ -37,26 +37,4 @@ export class AddTaskComponent {
   
 }
   
-  /*
-  @Output()
-  public onNewTask: EventEmitter<Task> = new EventEmitter();
-  
-  public task: Task ={
-    id: '',
-    nombre: '',
-    completado: false
-  }
-
-  //Función que emite nueva tarea al componente padre
-  emitTask(): void{
-    if(this.task.nombre.length === 0) return; //No emite nada si no se introduce nombre
-
-    this.onNewTask.emit(this.task);
-    this.task = {id: '', nombre: '', completado: false};
-  }
-
-
-*/
-
-
 

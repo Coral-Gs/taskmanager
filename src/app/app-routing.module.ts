@@ -9,7 +9,7 @@ const routes: Routes = [{
   path: 'taskList',
   component: MainPageComponent
 }, {
-  path: 'editTask',
+  path: 'editTask/:id',
   component: EditTaskComponent
 }, {
   path: '**',

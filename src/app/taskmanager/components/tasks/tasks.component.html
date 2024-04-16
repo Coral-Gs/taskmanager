@@ -5,6 +5,7 @@
   class="m-2"
 >
 <div class="grid">
+  <!--Completar task-->
   <input
     [(ngModel)]="task.completado"
     type="checkbox"
@@ -13,6 +14,7 @@
     class="col"
   />
   <span class="col">{{ task.nombre }}</span>
+  <!--Botón borrar-->
   <p-button
     icon="pi pi-times"
     [rounded]="true"
@@ -20,6 +22,12 @@
     (click)="onDeleteTask(task.id)"
     class="col"
   ></p-button>
+  <!--Botón editar que lleva a la vista /editTask pasando el ID-->
+  <p-button
+    icon="pi pi-pencil"
+    [routerLink]="['/editTask', task.id]"
+    class="col"
+    ></p-button>
 </div>
 </p-card>
 
