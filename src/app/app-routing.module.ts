@@ -1,7 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { EditTaskComponent } from './taskmanager/components/edit-task/edit-task.component';
+import { MainPageComponent } from './taskmanager/pages/main-page.component';
+
+const routes: Routes = [{
+
+  path: 'taskList',
+  component: MainPageComponent
+}, {
+  path: 'editTask',
+  component: EditTaskComponent
+}, {
+  path: '**',
+  redirectTo: 'taskList'
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

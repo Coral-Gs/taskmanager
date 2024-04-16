@@ -8,8 +8,6 @@ import { Task } from '../../interfaces/tasks.interfaces';
 })
 export class TasksComponent {
 
-  //TODO: public checked: boolean = false; //Tick del checkbox
-
   @Input()
   public tasksList!: Task[];
   @Output()

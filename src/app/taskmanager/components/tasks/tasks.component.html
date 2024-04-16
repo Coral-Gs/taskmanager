@@ -1,11 +1,25 @@
-<h4 class="mb-4 text-center">Lista de tareas</h4>
-<ul class="list-group">
-    <li 
-    class="list-group-item d-flex justify-content-between align-items-center"
-    *ngFor="let task of tasksList"
-    [ngClass]="{'list-group-item-success': task.completado}">
-    <input [(ngModel)]="task.completado" type="checkbox" id="checkbox" (click)="onCompleteTask(task.id)" > 
-    <span>{{task.nombre}}</span>
-    <button class="btn btn-danger" (click)="onDeleteTask(task.id)">X</button>
-</li>
-</ul>
+<h4>Lista de tareas</h4>
+
+<p-card
+  *ngFor="let task of tasksList"
+  class="m-2"
+>
+<div class="grid">
+  <input
+    [(ngModel)]="task.completado"
+    type="checkbox"
+    id="checkbox"
+    (click)="onCompleteTask(task.id)"
+    class="col"
+  />
+  <span class="col">{{ task.nombre }}</span>
+  <p-button
+    icon="pi pi-times"
+    [rounded]="true"
+    severity="danger"
+    (click)="onDeleteTask(task.id)"
+    class="col"
+  ></p-button>
+</div>
+</p-card>
+

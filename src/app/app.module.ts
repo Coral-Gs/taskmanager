@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { Practica1Component } from './practica1/practica1.component';
 import { TaskmanagerModule } from './taskmanager/taskmanager.module';
 
@@ -13,8 +14,8 @@ import { TaskmanagerModule } from './taskmanager/taskmanager.module';
   ],
   imports: [
     BrowserModule,
+    TaskmanagerModule,
     AppRoutingModule,
-    TaskmanagerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
