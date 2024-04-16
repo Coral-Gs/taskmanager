@@ -45,6 +45,7 @@ export class TaskService {
 
       return task;
     });
+
     this.saveLocalStorage();
   }
 

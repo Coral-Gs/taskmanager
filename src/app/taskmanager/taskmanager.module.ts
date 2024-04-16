@@ -26,6 +26,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
     PrimeNgModule,
     ReactiveFormsModule,
     RouterModule,
-  ]
+  ],
+  
 })
 export class TaskmanagerModule { }

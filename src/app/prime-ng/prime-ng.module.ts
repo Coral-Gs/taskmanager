@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   exports: [
@@ -19,7 +20,11 @@ import { ToastModule } from 'primeng/toast';
     CheckboxModule,
     ConfirmDialogModule,
     InputTextModule,
-    ToastModule
+    ToastModule,
+  ], 
+  providers: [
+    MessageService,
+    ConfirmationService
   ]
 
 })
