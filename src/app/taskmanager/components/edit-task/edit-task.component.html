@@ -2,9 +2,9 @@
 <div class="grid justify-content-center">
   <p-card class="m-2">
    <div class="col">
-      <form [formGroup]="validationService.myForm" (ngSubmit)="emitEditedTask(taskId)" >
+      <form [formGroup]="myEditTaskForm" (ngSubmit)="emitEditedTask()" >
       
-        <input type="text" pInputText formControlName="nombre" placeholder="Nuevo nombre" />
+        <input type="text" pInputText formControlName="nombre" placeholder="{{getTaskName()}}" />
       
         <!--Mensaje de confirmación de cambios realizados-->
         <p-toast position="top-center" key="tc"></p-toast>
@@ -16,8 +16,8 @@
         <p-button (click)="redirectToTaskList()" label="Atrás"></p-button>
 
         <!--Mensaje de error de validación-->
-        <div *ngIf="validationService.isValidField('nombre')" class="error-message">
-          {{ validationService.getFieldError('nombre') }}
+        <div *ngIf="validationService.isValidField(myEditTaskForm, 'nombre')" class="error-message">
+          {{ validationService.getFieldError(myEditTaskForm, 'nombre') }}
         </div>
     
       </form>

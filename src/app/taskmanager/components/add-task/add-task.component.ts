@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { ValidationService } from '../../services/validation-service';
 import { Task } from '../../interfaces/tasks.interfaces';
 import { TaskService } from '../../services/task-service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'add-task',
@@ -19,19 +20,26 @@ export class AddTaskComponent {
     completado: false
   }
 
+  public myAddTaskForm: FormGroup = this.fb.group({
+    //El nombre de la tarea es requerido y tiene que tener mínimo 4 caracteres
+    nombre: ['', [Validators.required, Validators.minLength(4)]]
+  })
+
   //Constructor para usar el servicio de validaciones
-  constructor(public validationService: ValidationService){}
+  constructor(
+    public validationService: ValidationService,
+    private fb: FormBuilder){}
 
   //Función que emite nueva tarea al componente padre
   emitTask(): void{
 
-    if (this.validationService.myForm.valid) {
+    if (this.myAddTaskForm.valid) {
       this.onNewTask.emit({
-        ...this.validationService.myForm.value,
+        ...this.myAddTaskForm.value,
         id: '',
         completado: false
       });
-      this.validationService.myForm.reset();
+      this.myAddTaskForm.reset({nombre: ''});
     }
   }
   

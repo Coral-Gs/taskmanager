@@ -22,18 +22,19 @@ No hay tareas pendientes
 >
   <div class="grid mt-5 flex align-items-baseline flex-wrap" id="task-content">
     <!--Completar task-->
-    <input
-      [(ngModel)]="task.completado"
-      type="checkbox"
-      id="checkbox"
-      (click)="onCompleteTask(task.id)"
-      class="col-2 ml-4 mr-2 "
-    />
+      <input
+        class="col-1 ml-4 mr-2"
+        [(ngModel)]="task.completado"
+        type="checkbox"
+        id="checkbox"
+        (click)="onCompleteTask(task.id)"
+        
+      />
+    
     <span class="col text-lg">{{ task.nombre }}</span>
     <!--Botón borrar-->
     <button pButton
-      icon="pi pi-times"
-      [rounded]="true"
+      icon="pi pi-trash"
       severity="danger"
       (click)="confirmDeletion($event, task.id)"
       class="p-button-sm"

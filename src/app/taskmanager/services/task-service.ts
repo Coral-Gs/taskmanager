@@ -11,7 +11,6 @@ export class TaskService {
   //Constructor que carga la info de tareas almacenada en local
   constructor() {
     this.loadLocalStorage()
-    console.log("Hola desde el servicio");
   }
   
   //Función para agregar una nueva tarea

@@ -1,12 +1,12 @@
 <h4>Agregar tarea</h4>
-<p-card class="m-2">
-  <form [formGroup]="validationService.myForm" 
+<div class="grid m-2 justify-content-center">
+  <form [formGroup]="myAddTaskForm" 
     (ngSubmit)="emitTask()" 
     class="m-2">
     <input type="text" pInputText formControlName="nombre" placeholder="Nombre de la tarea"/>
-    <div *ngIf="validationService.isValidField('nombre')" class="error-message">
-      {{ validationService.getFieldError('nombre') }}
+    <div *ngIf="validationService.isValidField(myAddTaskForm, 'nombre')" class="error-message">
+      {{ validationService.getFieldError(myAddTaskForm, 'nombre') }}
     </div>
-    <button pButton type="submit" label="Agregar" class="mt-3 md:ml3"></button>
+    <button pButton type="submit" label="Agregar" class="mt-3"></button>
   </form>
-</p-card>
+</div>
