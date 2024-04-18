@@ -23,18 +23,14 @@ export class TasksComponent {
     private messageService: MessageService, // Servicio de pop ups
     private confirmationService: ConfirmationService // Servicio de dialogo de confirmación
   ){}
-
   
-  //Emite ID de tarea a componente padre para completar tarea 
   onCompleteTask(id: string): void {
     this.completeTask.emit(id);
   }
 
-  //Emite ID de tarea a componente padre para borrar tarea
   onDeleteTask(id: string): void {
 
     this.deleteTask.emit(id);
-    console.log(id);
   }
 
   //Muestra diálogo de confirmación para eliminar o no una tarea
@@ -53,21 +49,22 @@ export class TasksComponent {
       
         accept: () => {
             this.onDeleteTask(id); //Emito el id de la tarea a eliminar desde el servicio
-            this.messageService.add({ severity: 'info', detail: 'Tarea eliminada', key:'dt' });
         },
         reject: () => {
             this.messageService.add({ severity: 'error', detail: 'La tarea no se ha eliminado', key:'dt',life: 3000 });
         }
     })
   }
-  //Función que redirecciona a la vista de edición solo si la tarea no está completada
+  
   redirectToEditTask(task: Task):void {
 
+    //Permite edición sin la tarea no está completada
     if (!task.completado) {
       this.router.navigate(['/editTask/', task.id])
     } else {
       this.messageService.add({ key: 'tc', severity: 'warn', detail: 'No se puede editar una tarea completada' });
     }
+    
   }
 
   

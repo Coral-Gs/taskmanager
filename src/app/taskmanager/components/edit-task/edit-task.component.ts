@@ -19,11 +19,8 @@ export class EditTaskComponent implements OnInit {
   public onEditTask: EventEmitter<Task> = new EventEmitter();
 
   public taskId: string = '';
-
-  public myEditTaskForm: FormGroup = this.fb.group({
-    //El nombre de la tarea es requerido y tiene que tener mínimo 4 caracteres
-    nombre: ['', [Validators.required, Validators.minLength(4)]]
-  })
+  public editField: string = '';
+  public myEditTaskForm!: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,16 +29,30 @@ export class EditTaskComponent implements OnInit {
     private fb: FormBuilder,
     private taskService: TaskService,
     public validationService: ValidationService,
-  ) {}
+    
+  ) {this.loadLocalStorage()} //Cargo local storage con el editField al refrescar
 
-  //Función de ciclo de vida que se suscribe a parámetros de ruta
   ngOnInit(): void {
+
+    //Me suscribo a cambios de parámetros de ruta
     this.route.params.subscribe((params) => {
       this.taskId = params['id']; // Obtengo el ID de la tarea desde la URL
     });
-  }
 
-  //Función que edita tarea al componente padre
+    //Creo formulario
+    this.myEditTaskForm = this.fb.group({
+      //El nombre de la tarea es requerido y tiene que tener mínimo 4 caracteres
+      nombre: ['', [Validators.required, Validators.minLength(4)]]
+    })
+
+     //Escucho cambios en el input del editTask y los guardo en el local storage
+     this.myEditTaskForm.get('nombre')!.valueChanges.subscribe(value => {
+      setTimeout(() => this.saveLocalStorage()); //settimeout permite que la pila de ejecución actual termine
+    });
+     
+     this.getTaskName();
+  }
+  
   emitEditedTask(): void {
 
     //Si el formulario es válido
@@ -49,33 +60,43 @@ export class EditTaskComponent implements OnInit {
       
       let editedTask = this.myEditTaskForm.value.nombre; //Obtengo valor del input
       this.taskService.editTask(this.taskId, editedTask); //Llamo al servicio para editar tarea
-      this.myEditTaskForm.reset({nombre: ''}); //Reseteo formulario
       
       //Muestro mensaje de edición realizada con éxito
       this.messageService.add({  key: 'tc', severity: 'success', detail: 'Edición realizada con éxito' });
 
       //Redirecciono a la vista de lista de tareas 3 segundos después
       setTimeout( () => {
-      this.router.navigate(['/taskList']);
+      this.redirectToTaskList();
       }, 1000) 
     }
   }
 
-
-  //Función para redireccionar al a taskList limpiando el formulario
   redirectToTaskList():void {
-    this.myEditTaskForm.reset({nombre: ''});
+    this.myEditTaskForm.reset({nombre: ''}); //Reseteo formulario
+    //localStorage.setItem('editField', ''); //Reseteo local storage
     this.router.navigate(['/taskList'])
   }
 
-  getTaskName():string | undefined{
+  getTaskName(){
 
     //Obtengo la tarea desde el servicio taskService 
-    //y la muestro el nombre en el placeholder del input de editar tarea
+    //y la asigno al valor del input
     const task = this.taskService.tasksList.find(task => task.id === this.taskId);
-
-    return task?.nombre;
+    if (this.editField.length>0) {
+      this.myEditTaskForm.get('nombre')!.setValue(this.editField);
+    } else {
+      this.myEditTaskForm.get('nombre')!.setValue(task?.nombre);
+    }
   }
- 
+
+  saveLocalStorage():void{
+    localStorage.setItem('editField', JSON.stringify(this.myEditTaskForm.value.nombre));
+  }
+
+  loadLocalStorage():void {
+    if (!localStorage.getItem('editField')) return;
+    this.editField = JSON.parse(localStorage.getItem('editField')!);
+  }
+
 }
 
