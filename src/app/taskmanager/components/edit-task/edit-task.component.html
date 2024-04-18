@@ -2,7 +2,7 @@
 <div class="grid justify-content-center">
   <p-card class="m-2">
    <div class="col">
-      <form [formGroup]="myEditTaskForm" (ngSubmit)="emitEditedTask()" formControlName="nombre" >
+      <form [formGroup]="myEditTaskForm" (ngSubmit)="emitEditedTask()">
       
         <input type="text" pInputText formControlName="nombre"  />
       
